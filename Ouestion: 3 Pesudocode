@@ -1,0 +1,13 @@
+Start 
+Print"Enter two number and operate"
+Input N and M
+Input Q:= operates
+If
+  Q==*
+  N*M:= total
+  Print"total"
+Else
+  Q==/
+  N/M:= total
+  Print"total"
+End

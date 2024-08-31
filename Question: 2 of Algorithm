@@ -1,6 +1,0 @@
-Start
-Take the day (1 - 365)
-Store Sunday:= 0 Monday:=1 Tuesday:=2 Wednesday:=3 Thursday:=4 Friday:=5 Saturaday:=6
-Put 1 January as Monday
-Day%7== Varalible
-Print"Store Value of Varalible"

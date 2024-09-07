@@ -1,0 +1,21 @@
+#include <stdio.h>
+int main()
+{
+	float p;
+	float r;
+	float t;
+	float i;
+	float a;
+	printf("enter principle amount");
+	scanf("%f",&p);
+	printf("enter interest rate");
+	scanf("%f",&r);
+	printf("enter time period");
+	scanf("%f",&t);
+	r=r/100;
+	i=p*r;
+	i=i*t;
+	a=p+i;
+	printf("total amount");
+	printf("%f",a);
+}

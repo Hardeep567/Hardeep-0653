@@ -6,16 +6,16 @@ int main()
 	float t;
 	float i;
 	float a;
-	printf("enter principle amount");
+	printf("Enter principle amount");
 	scanf("%f",&p);
-	printf("enter interest rate");
+	printf("Enter interest rate");
 	scanf("%f",&r);
-	printf("enter time period");
+	printf("Enter time period");
 	scanf("%f",&t);
 	r=r/100;
 	i=p*r;
 	i=i*t;
 	a=p+i;
-	printf("total amount");
+	printf("Total amount");
 	printf("%f",a);
 }

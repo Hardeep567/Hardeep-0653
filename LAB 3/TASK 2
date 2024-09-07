@@ -11,9 +11,9 @@ int main()
 	z=x;
 	x=y;
 	y=z;
-	printf("first number");
+	printf("First number");
 	printf("%d",x);
-	printf("\nsecond number");
+	printf("\nSecond number");
 	printf("%d",y);
 	return 0;
 }

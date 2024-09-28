@@ -1,3 +1,8 @@
+/*
+   Name : Hardeep Naresh
+   Date : 26 Sept 2024
+   Desc : Eligible for Vote
+*/
 #include<stdio.h>
 int main(){
 	int age;

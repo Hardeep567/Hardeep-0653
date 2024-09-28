@@ -1,3 +1,8 @@
+/*
+   Name : Hardeep Naresh
+   Date : 26 Sept 2024
+   Desc : Greatest Number 
+*/
 #include<stdio.h>
 int main(){
 	int a,b,c;

@@ -1,3 +1,8 @@
+/*
+   Name : Hardeep Naresh
+   Date : 26 Sept 2024
+   Desc : Number is Zero,Negative and Positive( Even and Odd )
+*/
 #include<stdio.h>
 int main(){
 	int Number;

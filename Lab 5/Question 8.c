@@ -1,3 +1,8 @@
+/*
+   Name : Hardeep Naresh
+   Date : 26 Sept 2024
+   Desc : Representation into 1s Binary
+*/
 #include <stdio.h>
 
 int main() {

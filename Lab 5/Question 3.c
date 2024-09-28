@@ -1,3 +1,8 @@
+/*
+   Name : Hardeep Naresh
+   Date : 26 Sept 2024
+   Desc : Mult: of 3 and 5
+*/
 #include<stdio.h>
 int main(){
 	int Number;

@@ -1,3 +1,8 @@
+/*
+   Name : Hardeep Naresh
+   Date : 26 Sept 2024
+   Desc : Encrypted and Decrypted
+*/
 #include <stdio.h>
 
 int main() {

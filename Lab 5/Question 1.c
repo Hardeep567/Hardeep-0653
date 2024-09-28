@@ -1,3 +1,8 @@
+/* 
+    Name : Hardeep Naresh 
+    Date : 26 Sept 2024
+    Desc : Age Problem( teen or adult )
+*/
 #include <stdio.h>
 
 int main() {

@@ -6,6 +6,7 @@
 #include<stdio.h>
 int main(){
 	int number, sum, mod_value;
+	sum =0;
 	printf("Enter the year	");
 	scanf("%d", &number);
 	while(number>0){

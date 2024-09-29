@@ -6,12 +6,12 @@
 #include<stdio.h>
 int main(){
 	int age;
-	char citizen[50];
+	char citizen;
 	printf("Enter the age  ");
 	scanf("%d", &age);
-	printf("Enter the citizenship  ");
+	printf("Enter the 'y' If you are citizenship and other 'n' ");
 	scanf("%s", citizen);
-	if(citizen=='Karachi'){
+	if(citizen =='y'){
 		if(age>=18){
 			printf("Eligile for vote");
 		}

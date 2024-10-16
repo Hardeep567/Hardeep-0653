@@ -20,7 +20,6 @@ int main(){
 	}
 	int arr[c+2];
 	
-	//printf("%d", c);
 	for(i=0;i<=c+1;i++){
 		arr[i]=0;
 	}
@@ -28,7 +27,6 @@ int main(){
 	for(i=0;i<n;i++){
 	
 		arr[a[i]]++;
-	//	printf("%d", arr[a[i]]);
 	}
 	
 	for(i=0;i<=c+1;i++){

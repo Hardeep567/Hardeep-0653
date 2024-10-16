@@ -1,6 +1,6 @@
 #include<stdio.h>
 int main(){
-	int n,i,sum=0;
+	int n,i;
 	printf("Enter the array size");
 	scanf("%d", &n);
 	int arr[n];

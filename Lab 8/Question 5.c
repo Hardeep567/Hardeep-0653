@@ -1,20 +1,16 @@
-#include <stdio.h>
-
-int main() {
-    int num;
-    int i,j;
-    printf("Enter the number:");
-    scanf("%d", &num);
-    printf("The ODD is :\n");
-    for(i=num;i>=1;i--){
-        if(i%2!=0){
-            for(j=0;j<i;j++){
-            printf("%d", i);
-            }
-            printf("\n");
-        }
-    }
-   
-
-    return 0;
+#include<stdio.h>
+int main(){
+	int n, j, i,a;
+	printf("Enter Number of rows: ");
+	scanf("%d",&n);
+	for(i=1; a>=1; i++)
+	{   if(n%2==0)a=n-1;
+		else a=n;
+		for(j=i; j>=1; j--)
+		{
+			printf("%d ", a);
+			a=a-2;
+		}
+		printf("\n");
+	}
 }

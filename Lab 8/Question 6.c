@@ -30,7 +30,7 @@ int main(){
     for(i=0;i<3;i++){
         for(j=0;j<3;j++){
         if(a[i]==n[j]){
-            printf("%d", a[i]);
+            printf("Saddle point = %d", a[i]);
             found=1;
             n[j]=-99;
         }

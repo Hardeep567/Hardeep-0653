@@ -18,6 +18,7 @@ int main() {
             }
             else{
                 found = 0;
+                break;
             }
         }
         if(found == 1){

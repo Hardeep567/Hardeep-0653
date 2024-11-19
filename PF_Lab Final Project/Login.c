@@ -11,10 +11,11 @@ int adminlogin(){
 	login str;
 	printf("Enter the Username Without Space\n");
 	scanf("%s", str.name);
+	getchar();
 	if(strcmp(str.name,"admin123")!=0) return 0;
 	printf("Enter the password\n");
-	scanf("%d", &str.password);
-	if(str.password=="765626"){
+	scanf("%s", str.password);
+	if(strcmp(str.password,"765626")==0){
 		return 1;
 	}
 	return 0;
@@ -24,11 +25,12 @@ void adduser(){
 	login str;
 	printf("Enter the Username Without Space\n");
 	scanf("%s", str.name);
+	getchar();
 	printf("Enter the password\n");
-	scanf("%d", str.password);
+	scanf("%s", str.password);
 	FILE *ptr=fopen("login.txt","a");
 	if (ptr == NULL) {
-        printf("Error: Unable to open file for reading.\n");
+        printf("Error\n");
         return;
     }
 	fwrite(&str,sizeof(str),1,ptr);
@@ -37,33 +39,82 @@ void adduser(){
 	
 }
 
-void finduser(){
+void changepassword(){
 	login str,str2;
+	char change[50];
 	printf("Enter the Username Without Space\n");
 	scanf("%s", str.name);
-	getchar();
-	printf("Enter the password\n");
+	
+	printf("Enter the current password\n");
 	scanf("%s", str.password);
+	
 	FILE *ptr=fopen("login.txt","r");
 	 if (ptr == NULL) {
-        printf("Error: Unable to open file for reading.\n");
+        printf("Error\n");
         return;
     }
+    FILE *ptr2=fopen("copy.txt","w");
+    while(fread(&str2,sizeof(str2),1,ptr)){
+    	if (strcmp(str2.name, str.name) == 0 && strcmp(str2.password, str.password) == 0) {
+        	printf("Enter the New Password");
+        	scanf("%s", change);
+        	strcpy(str2.password,change);
+		}
+			fwrite(&str2,sizeof(str2),1,ptr2);	
+	}
+	fclose(ptr);
+	fclose(ptr2);
+	remove("login.txt");
+    rename("copy.txt", "login.txt");
+    printf("Password changed successfully\n");
+	return ;
+	
+}
+
+void finduser(){
+	login str,str2;
+	int found=0;
+	printf("Enter the Username Without Space\n");
+	scanf("%s", str.name);
+	
+	printf("Enter the password\n");
+	scanf("%s", str.password);
+	
+	
+	FILE *ptr=fopen("login.txt","r");
+	 if (ptr == NULL) {
+        printf("Error\n");
+        return;
+    }
+    int num;
 	while(fread(&str2,sizeof(str2),1,ptr)){
 		if (strcmp(str2.name, str.name) == 0 && strcmp(str2.password, str.password) == 0) {
-            printf("Login successful! User is available.\n");
+            found = 1;
+			printf("User is available.\n");
+            printf("Enter\n 1.To change the password. \n 2.continous\n");
+            scanf("%d", &num);
+            if(num==1){
+            	fclose(ptr);
+            	changepassword();
+				return;
+			}
             break;
         }
+	}
+	if(found==0){
+		printf("User is not available");
 	}
 	fclose(ptr);
 	return ;
 }
 
+
+
 int main(){
 	login str;
 	int num;
 	do{
-	printf("Enter\n 1. Admin Login \n 2. Resigration \n 3. Login \n 4. Exist\n");
+	printf("Enter\n 1. Admin Login \n 4. Registration \n 3. Login \n 4. Exit\n");
 	scanf("%d", &num);
 	if(num==1){
 		int c=adminlogin();
@@ -72,13 +123,13 @@ int main(){
 	}
 	else if(num==2){
 		adduser();
-		printf("Login Succesfully\n");
+		printf("Added Succesfully\n");
 	}
 	else if(num==3){
 		finduser();
 	}
 	else if(num==4){
-		printf("Thanks\n");
+		printf("Your exit\n");
 		return 0;
 	}
 	}while(num>=1 && num<=4);

@@ -17,12 +17,12 @@ int main(){
     strcpy(arr[0].genre,"Action");
     strcpy(arr[0].director,"Hardeep Naresh");
     arr[0].releaseyear=2023;
-    arr[0].rating=4.4;
+    arr[0].rating=4.4\n;
    
     int num;
    
     do{
-        printf("Enter Number 1.Search 2.Add Movie\n");
+        printf("\nEnter Number 1.Search 2.Add Movie\n");
     scanf("%d", &num);
     if(num==1){
         char ser[30];

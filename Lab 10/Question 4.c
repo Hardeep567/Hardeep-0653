@@ -51,6 +51,6 @@ int main(){
        scanf("%f", &arr[i-1].rating);
        i++;
     }
-    }while(num>=1 || num<=2);
+    }while(num>=1 && num<=2);
     return 0;
 }

@@ -124,79 +124,93 @@ printf("\n			   ----->no record found<-----\n\n\n");
 void storing(char str[], char password[], float totalPrice) {
     data copy;
     int found = 0, stored = 0;
-	system("cls");
-    FILE *ptr = fopen("FastFood.txt", "a+");
+
+    FILE *ptr = fopen("FastFood.txt", "r");
     FILE *ptr2 = fopen("CopyFastFood.txt", "w");
+
     if (ptr == NULL || ptr2 == NULL) {
-        printf("\n		error, file doesn't exist...\n");
+        printf("\nError: Could not open file(s).\n");
+        if (ptr) fclose(ptr);
+        if (ptr2) fclose(ptr2);
         return;
     }
-	
-	time_t current_time;
-    time(&current_time);
 
+    time_t current_time = time(NULL);
     struct tm *local_time = localtime(&current_time);
-	
     int year = local_time->tm_year + 1900;
     int month = local_time->tm_mon + 1;
     int date = local_time->tm_mday;
-	Sleep(1000);
-    while (fscanf(ptr, "%s %s %f %f %f %f %f %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d", copy.name, copy.password, 
-           &copy.total[0], &copy.total[1], &copy.total[2], 
-           &copy.total[3], &copy.total[4],&copy.date[0][0],&copy.date[0][1],&copy.date[0][2],&copy.date[1][0],
-		   &copy.date[1][1],&copy.date[1][2],&copy.date[2][0],&copy.date[2][1],&copy.date[2][2],&copy.date[3][0],&copy.date[3][1],&copy.date[3][2],
-		   &copy.date[4][0],&copy.date[4][1],&copy.date[4][2]) != EOF) {
+
+    while (fscanf(ptr, "%s %s %f %f %f %f %f %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d",
+                  copy.name, copy.password,
+                  &copy.total[0], &copy.total[1], &copy.total[2],
+                  &copy.total[3], &copy.total[4],
+                  &copy.date[0][0], &copy.date[0][1], &copy.date[0][2],
+                  &copy.date[1][0], &copy.date[1][1], &copy.date[1][2],
+                  &copy.date[2][0], &copy.date[2][1], &copy.date[2][2],
+                  &copy.date[3][0], &copy.date[3][1], &copy.date[3][2],
+                  &copy.date[4][0], &copy.date[4][1], &copy.date[4][2]) != EOF) {
         if (strcmp(copy.name, str) == 0 && strcmp(copy.password, password) == 0) {
             stored = 1;
             for (int i = 0; i < 5; i++) {
                 if (copy.total[i] == 0) {
                     copy.total[i] = totalPrice;
-                    copy.date[i][0]=date;
-                    copy.date[i][1]=month;
-                    copy.date[i][2]=year;
+                    copy.date[i][0] = date;
+                    copy.date[i][1] = month;
+                    copy.date[i][2] = year;
                     found = 1;
                     break;
                 }
             }
-            
-            if (found == 0) {
+
+            if (found==0) {
                 for (int i = 1; i < 5; i++) {
                     copy.total[i - 1] = copy.total[i];
-                    copy.date[i-1][0]= copy.date[i][0];
-                    copy.date[i-1][1]= copy.date[i][1];
-                    copy.date[i-1][2]= copy.date[i][2];
+                    copy.date[i - 1][0] = copy.date[i][0];
+                    copy.date[i - 1][1] = copy.date[i][1];
+                    copy.date[i - 1][2] = copy.date[i][2];
                 }
                 copy.total[4] = totalPrice;
-                copy.date[4][0]=date;
-                copy.date[4][1]=month;
-                copy.date[4][2]=year;
+                copy.date[4][0] = date;
+                copy.date[4][1] = month;
+                copy.date[4][2] = year;
             }
         }
         fprintf(ptr2, "%s %s %.2f %.2f %.2f %.2f %.2f %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d\n",
                 copy.name, copy.password,
                 copy.total[0], copy.total[1], copy.total[2],
-                copy.total[3], copy.total[4],copy.date[0][0],copy.date[0][1],copy.date[0][2],copy.date[1][0],
-				copy.date[1][1],copy.date[1][2],copy.date[2][0],copy.date[2][1],copy.date[2][2],copy.date[3][0],copy.date[3][1],copy.date[3][2],
-				copy.date[4][0],copy.date[4][1],copy.date[4][2]);
+                copy.total[3], copy.total[4],
+                copy.date[0][0], copy.date[0][1], copy.date[0][2],
+                copy.date[1][0], copy.date[1][1], copy.date[1][2],
+                copy.date[2][0], copy.date[2][1], copy.date[2][2],
+                copy.date[3][0], copy.date[3][1], copy.date[3][2],
+                copy.date[4][0], copy.date[4][1], copy.date[4][2]);
     }
 
-    if (stored == 0) {
+    if (stored==0) {
         strcpy(copy.name, str);
         strcpy(copy.password, password);
-        copy.date[0][0]=date;
-        copy.date[0][1]=month;
-        copy.date[0][2]=year;
+        for (int i = 1; i < 5; i++) {
+            copy.total[i] = 0;
+            copy.date[i][0] = copy.date[i][1] = copy.date[i][2] = 0;
+        }
         copy.total[0] = totalPrice;
-        fprintf(ptr2, "%s %s %.2f %.2f %.2f %.2f %.2f %d %d %d \n",
+        copy.date[0][0] = date;
+        copy.date[0][1] = month;
+        copy.date[0][2] = year;
+
+        fprintf(ptr2, "%s %s %.2f %.2f %.2f %.2f %.2f %d %d %d\n",
                 copy.name, copy.password,
                 copy.total[0], copy.total[1], copy.total[2],
-                copy.total[3], copy.total[4],copy.date[0][0],copy.date[0][1],copy.date[0][2]);
+                copy.total[3], copy.total[4],
+                copy.date[0][0], copy.date[0][1], copy.date[0][2]);
     }
 
     fclose(ptr);
     fclose(ptr2);
+
     remove("FastFood.txt");
-    rename("CopyFastFood.txt","FastFood.txt");
+    rename("CopyFastFood.txt", "FastFood.txt");
 }
 
 // ------------------->Printing Menu of Fast Food Restaurant<----------------------

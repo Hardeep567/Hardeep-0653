@@ -81,7 +81,7 @@ void adminchecking(){
 		printf("	--------------->RECORD<----------------	\n\n");
 	system("cls");
 	data copy;
-	FILE * ptr=fopen("FastFood.txt","r");
+	FILE * ptr=fopen("FastFood.txt","a+");
 	if(ptr == NULL){
 printf("\n			   ----->no record found<-----\n\n\n");
 	}
@@ -125,7 +125,7 @@ void storing(char str[], char password[], float totalPrice) {
     data copy;
     int found = 0, stored = 0;
 
-    FILE *ptr = fopen("FastFood.txt", "r");
+    FILE *ptr = fopen("FastFood.txt", "a+");
     FILE *ptr2 = fopen("CopyFastFood.txt", "w");
 
     if (ptr == NULL || ptr2 == NULL) {

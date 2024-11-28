@@ -187,7 +187,7 @@ void storing(char str[], char password[], float totalPrice) {
         copy.date[0][1]=month;
         copy.date[0][2]=year;
         copy.total[0] = totalPrice;
-        fprintf(ptr2, "%s %s %.2f %.2f %.2f %.2f %.2f %d %d %d\n",
+        fprintf(ptr2, "%s %s %.2f %.2f %.2f %.2f %.2f %d %d %d \n",
                 copy.name, copy.password,
                 copy.total[0], copy.total[1], copy.total[2],
                 copy.total[3], copy.total[4],copy.date[0][0],copy.date[0][1],copy.date[0][2]);
@@ -196,7 +196,7 @@ void storing(char str[], char password[], float totalPrice) {
     fclose(ptr);
     fclose(ptr2);
     remove("FastFood.txt");
-    rename("CopyFastFood.txt", "FastFood.txt");
+    rename("CopyFastFood.txt","FastFood.txt");
 }
 
 // ------------------->Printing Menu of Fast Food Restaurant<----------------------

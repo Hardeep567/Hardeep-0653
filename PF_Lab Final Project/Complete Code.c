@@ -6,7 +6,6 @@
 
 float totalPrice = 0;
 
-
 typedef struct login{
 	char name[50];
 	char password[50];
@@ -22,12 +21,12 @@ typedef struct datastoring{
 // ------------------->Discount<----------------------
 int discountofbulk(int Price){
 	if (Price >= 10000){
-		printf("You get 10 percentage discount");
+		printf("\n		congratulations, you got 10% discount... \n");
 		return Price -(Price*0.10);
 	}
 	
 	else if (Price > 1000){
-		printf("You get 100 RS discount");
+		printf("\n		congratulations, you got rs 100 discount... \n");
 		return Price - 100;
 	}
 
@@ -37,40 +36,41 @@ int discountofbulk(int Price){
 // ------------------->Payment System<----------------------
 int paymentsystem(){
 	int choice;
-
+printf("\n\n\n			   ----->PAYMENT SYSTEM<-----\n\n\n");
 	while(1){
-	printf("Enter\n");
-	printf("1. Atm Card\n");
-	printf("2. Cash\n");
-	printf("3. Online Payment\n");
-	printf("4. EXIST\n");
+	printf("\n	   1. card payment\n");
+	printf("\n	   2. pay in cash\n");
+	printf("\n	   3. pay online\n");
+	printf("\n	   4. exit\n");
+	printf("\n	   enter a number to continue... ");
 	scanf("%d", &choice);
 	
 	switch(choice){
 		case 1:
-			printf("Give your card\n");
+			printf("\n	   transaction complete...\n");
 			Sleep(1000);
-			printf("THANKS FOR BUYING");
+printf("\n			   ----->THANK YOU<-----\n\n\n");
+
 			Sleep(1000);
 			return 0;
 		case 2:
-			printf("Give Cash\n");
+			printf("\n	   transaction complete...\n");
 			Sleep(1000);
-			printf("THANKS FOR BUYING");
+printf("\n			   ----->THANK YOU<-----\n\n\n");
 			Sleep(1000);
 			return 0;
 		case 3:
-			printf("Account Number is 234509\n");
+			printf("\n	   transaction complete...\n");
 			Sleep(1000);
-			printf("THANKS FOR BUYING");
+printf("\n			   ----->THANK YOU<-----\n\n\n");
 			Sleep(1000);
 			return 0;
 		case 4:
-			printf("Your Order is cancell");
+printf("\n			   ----->ORDER CANCELLED<-----\n\n\n");
 			Sleep(10);
 			return 1;
 		default:
-			printf("WRONG OPTION");
+			printf("\n	   invalid choice...\n");
 			break;
 		}
 	}
@@ -78,15 +78,19 @@ int paymentsystem(){
 
 // ------------------->Admin Checking<----------------------
 void adminchecking(){
+		printf("	--------------->RECORD<----------------	\n\n");
 	system("cls");
 	data copy;
 	FILE * ptr=fopen("FastFood.txt","r");
+	if(ptr == NULL){
+printf("\n			   ----->no record found<-----\n\n\n");
+	}
 	while(fscanf(ptr,"%s %s  %f  %f  %f  %f  %f %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d",copy.name,copy.password,&copy.total[0],&copy.total[1],&copy.total[2],
 		&copy.total[3],&copy.total[4],&copy.date[0][0],&copy.date[0][1],&copy.date[0][2],&copy.date[1][0],
 		&copy.date[1][1],&copy.date[1][2],&copy.date[2][0],&copy.date[2][1],&copy.date[2][2],&copy.date[3][0],&copy.date[3][1],&copy.date[3][2],
 		&copy.date[4][0],&copy.date[4][1],&copy.date[4][2]) != EOF) {
-			printf("User Name: %s ",copy.name);
-			printf("User Password: %s \n",copy.password);
+			printf("User Name: %s ", copy.name);
+			printf("User Password: %s \n", copy.password);
 		
 		if(copy.total[0] != 0){
 			printf("Order is 1  %.1f \n",copy.total[0]);
@@ -113,6 +117,7 @@ void adminchecking(){
 			printf("Day of order 5 is : %d %d %d\n",copy.date[4][0],copy.date[4][1],copy.date[4][2]);
 		}
 	}
+	Sleep(5000);
 }
 
 // ------------------->Storing Order Detail<----------------------
@@ -123,7 +128,7 @@ void storing(char str[], char password[], float totalPrice) {
     FILE *ptr = fopen("FastFood.txt", "a+");
     FILE *ptr2 = fopen("CopyFastFood.txt", "w");
     if (ptr == NULL || ptr2 == NULL) {
-        printf("Error opening file.\n");
+        printf("\n		error, file doesn't exist...\n");
         return;
     }
 	
@@ -198,40 +203,41 @@ void storing(char str[], char password[], float totalPrice) {
 void Menufast() {
 	system("cls");
 	
-	printf("     *************\n");
-	printf("     *    -------------------------    *\n");
-	printf("     *    WELCOME TO THE RESTAURANT    *\n");
-	printf("     *    -------------------------    *\n");
-	printf("     *************\n\n\n");
+		printf("           *********************************************\n");
+		printf("           *    -----------------------------------    *\n");
+		printf("           *            ----->fast food<-----          *\n");
+		printf("           *    -----------------------------------    *\n");
+		printf("           *********************************************\n\n\n");
+
 	
-    printf("  ----------- \n");
-    printf("| OUR MENU IS |\n");
-    printf("  ----------- \n");
-    printf("1. Burger\n");
-    printf("2. Bar BQ\n");
-    printf("3. Pizza \n");
-    printf("4. Roll \n");
-    printf("5. Juice\n");
-    printf("6. Ice Cream\n");
-    printf("7. BACK \n");
+    printf("\n		  ----------- \n");
+    printf("\n	        | OUR MENU IS |\n");
+    printf("\n	          ----------- \n");
+    printf("\n		1. burger\n");
+    printf("\n		2. BBQ\n");
+    printf("\n		3. pizza\n");
+    printf("\n		4. poll\n");
+    printf("\n		5. juice\n");
+    printf("\n		6. ice Cream\n");
+    printf("\n		7. exit\n");
 
 }
 
 // ------------------->Selecting Item<----------------------
 void selectItem(const char* itemName, float pricePerUnit) {
     int quantity;
-    printf("Enter quantity for %s: ", itemName);
+    printf("\n		enter quantity for %s: ", itemName);
     scanf("%d", &quantity);
     
 	if (quantity > 0) {
         float itemTotal = quantity * pricePerUnit;
         totalPrice += itemTotal;
 		system("cls");
-        printf("YOUR TOTAL BILL IS : %.2f \n\n\n",itemTotal);
+        printf("	   YOUR TOTAL BILL IS : %.2f \n\n\n",itemTotal);
     }
 	
 	else {
-        printf("Invalid quantity \n");
+        printf("\n	   invalid quantity...\n");
     }
     
     return ;
@@ -240,17 +246,16 @@ void selectItem(const char* itemName, float pricePerUnit) {
 // ------------------->Printing Burger Menu<----------------------
 void BurgerMenu() {
 	system("cls");
+printf("\n			   ----->BURGER MENU<-----\n\n\n");
     
 	int choice;
-    printf("BURGER MENU :\n");
-    printf("\n");
-    printf("1. Zinger Burger - 450 \n");
-    printf("2. Chicken Burger - 400 \n");
-    printf("3. Cheese Burger - 370 \n");
-    printf("4. Veggie Burger - 350 \n");
-    printf("5. Back to Main Menu \n");
-    printf("Enter your choice: ");
-    scanf("%d", &choice);
+        printf("\n	   1. zinger Burger - 450\n");
+        printf("\n	   2. chicken Burger - 400\n");
+        printf("\n	   3. cheese Burger - 370\n");
+        printf("\n	   4. veggie Burger - 350\n");
+        printf("\n	   5. back to main menu\n");
+        printf("\n	   enter a number to continue... ");
+        scanf("%d", &choice);
 
     switch (choice) {
         case 1:
@@ -268,7 +273,7 @@ void BurgerMenu() {
         case 5:
             return;
         default:
-            printf("Invalid choice.\n");
+            printf("\n		invalid choice...\n");
     }
 }
 
@@ -277,13 +282,12 @@ void BarBQMenu() {
 	system("cls");
     
 	int choice;
-    printf("BAR BQ MENU :\n");
-    printf("\n");
-    printf("1. Chicken Tikka - 540 \n");
-    printf("2. Beef Kebab - 500 \n");
-    printf("3. Fried Fish - 1200 \n");
-    printf("4. Back to Main Menu\n");
-    printf("Enter your choice: ");
+printf("\n			   ----->BBQ MENU<-----\n\n\n");
+    printf("\n		1. chicken tikka - 540 \n");
+    printf("\n		2. beef kebab - 500 \n");
+    printf("\n		3. fried fish - 1200 \n");
+    printf("\n		4. back to main menu\n");
+    printf("\n		enter a number to continue... ");
     scanf("%d", &choice);
 
     switch (choice) {
@@ -299,7 +303,7 @@ void BarBQMenu() {
         case 4:
             return;
         default:
-            printf("Invalid choice \n");
+            printf("		invalid choice... \n");
     }
 }
 
@@ -307,15 +311,14 @@ void BarBQMenu() {
 void PizzaMenu() {
 	system("cls");
     int choice;
+printf("\n			   ----->PIZZA MENU<-----\n\n\n");
     
-	printf("PIZZA MENU :\n");
-    printf("\n");
-    printf("1. Chicken Fatjita - 1200 \n");
-    printf("2. Chicken Tikka  - 1100 \n");
-    printf("3. BBQ Chicken - 1150 \n");
-    printf("4. Achari - 1000 \n");
-    printf("5. Back to Main Menu\n");
-    printf("Enter your choice: ");
+    printf("\n		1. chicken fatjita - 1200 \n");
+    printf("\n		2. chicken tikka  - 1100 \n");
+    printf("\n		3. BBQ chicken - 1150 \n");
+    printf("\n		4. achari - 1000 \n");
+    printf("\n		5. back to main menu\n");
+    printf("\n		enter a number to continue... ");
     scanf("%d", &choice);
 
     switch (choice) {
@@ -334,7 +337,7 @@ void PizzaMenu() {
         case 5:
             return;
         default:
-            printf("Invalid choice \n");
+            printf("\n		invalid choice...\n");
     }
 }
 
@@ -343,13 +346,12 @@ void RollMenu() {
 	system("cls");
     
 	int choice;
-    printf("ROLL MENU :\n");
-    printf("*\n");
-    printf("1. Chicken Roll - 170 \n");
-    printf("2. Beef Roll - 350 \n");
-    printf("3. Zinger Roll - 250 \n");
-    printf("4. Back to Main Menu\n");
-    printf("Enter your choice: ");
+printf("\n			   ----->ROLL MENU<-----\n\n\n");
+    printf("\n		1. chicken roll - 170 \n");
+    printf("\n		2. beef roll - 350 \n");
+    printf("\n		3. zinger roll - 250 \n");
+    printf("\n		4. back to ain menu\n");
+    printf("\n		enter a number to continue... ");
     scanf("%d", &choice);
 
     switch (choice) {
@@ -365,7 +367,7 @@ void RollMenu() {
         case 4:
             return;
         default:
-            printf("Invalid choice \n");
+            printf("\n		invalid choice...\n");
     }
 }
 
@@ -374,14 +376,13 @@ void JuiceMenu() {
 	system("cls");
     int choice;
     
-	printf("JUICE MENU :\n");
-    printf("\n");
-    printf("1. Orange Juice - 150 \n");
-    printf("2. Apple Juice - 170 \n");
-    printf("3. Mango Juice - 150 \n");
-    printf("4. Pineapple Juice - 200 \n");
-    printf("5. Back to Main Menu\n");
-    printf("Enter your choice: ");
+printf("\n			   ----->JUICE MENU<-----\n\n\n");
+    printf("\n		1. orange juice - 150 \n");
+    printf("\n		2. apple juice - 170 \n");
+    printf("\n		3. mango juice - 150 \n");
+    printf("\n		4. pineapple juice - 200 \n");
+    printf("\n		5. back to main menu\n");
+    printf("\n		enter a number to continue... ");
     scanf("%d", &choice);
 
     switch (choice) {
@@ -400,7 +401,7 @@ void JuiceMenu() {
         case 5:
             return;
         default:
-            printf("Invalid choice.\n");
+            printf("\n		invalid choice...\n");
     }
 }
 
@@ -409,14 +410,13 @@ void IceCreamMenu() {
 	system("cls");
     int choice;
     
-	printf("ICE CREAM MENU :\n");
-    printf("\n");
-    printf("1. Chocolate - 150 \n");
-    printf("2. Vanilla - 170 \n");
-    printf("3. Strawberry - 150 \n");
-    printf("4. Mango - 200 \n");
-    printf("5. Back to Main Menu\n");
-    printf("Enter your choice: ");
+printf("\n			   ----->ICECREAM MENU<-----\n\n\n");
+    printf("\n		1. chocolate - 150 \n");
+    printf("\n		2. vanilla - 170 \n");
+    printf("\n		3. strawberry - 150 \n");
+    printf("\n		4. mango - 200 \n");
+    printf("\n		5. back to main menu\n");
+    printf("\n		enter your choice: ");
     scanf("%d", &choice);
 
     switch (choice) {
@@ -435,7 +435,7 @@ void IceCreamMenu() {
         case 5:
             return;
         default:
-            printf("Invalid choice.\n");
+            printf("\n		invalid choice....\n");
     }
 }
 
@@ -447,7 +447,7 @@ void fastfood(char str[],char password[]){
     
 	while(1){
         Menufast();
-        printf("\nEnter your choice : ");
+        printf("\n		enter a number to continue... ");
         scanf("%d", &choice);
 
         switch (choice) {
@@ -471,13 +471,13 @@ void fastfood(char str[],char password[]){
                 break;
             case 7:
             	totalPrice = discountofbulk(totalPrice);
-                printf("\nTotal Order Prize : %.2f\n", totalPrice);
+                printf("\n	   TOTAL ORDER PRICE : %.2f\n", totalPrice);
                 c = paymentsystem();
 				if(c == 0)storing(str,password,totalPrice);
 				
 				return ;
             default:
-                printf("Invalid choice - Try Again \n\n\n");
+                printf("\n		invalid choice... try again...\n\n\n");
         } 
     }
     return ;
@@ -487,22 +487,22 @@ void fastfood(char str[],char password[]){
 void Menudesi() {
 	system("cls");
 	
-	printf("     *************\n");
-	printf("     *    ----------------------------     *\n");
-	printf("     *    WELCOME TO THE RESTAURANT 02     *\n");
-	printf("     *    ----------------------------     *\n");
-	printf("     *************\n\n\n");
+		printf("           *********************************************\n");
+		printf("           *    -----------------------------------    *\n");
+		printf("           *               ----->desi food<-----       *\n");
+		printf("           *    -----------------------------------    *\n");
+		printf("           *********************************************\n\n\n");
     
-    printf("  ----------- \n");
-    printf("| OUR MENU IS |\n");
-    printf("  ----------- \n");
-    printf("1. Karahi \n");
-    printf("2. Bar BQ\n");
-    printf("3. Daal \n");
-    printf("4. Paratha \n");
-    printf("5. Juice\n");
-    printf("6. Ice Cream\n");
-    printf("7. BACK \n");
+    printf("\n	     ----------- \n");
+    printf("\n	   | OUR MENU IS |\n");
+    printf("\n             ----------- \n");
+    printf("\n		1. karahi \n");
+    printf("\n		2. BBQ\n");
+    printf("\n		3. daal \n");
+    printf("\n		4. paratha \n");
+    printf("\n		5. juice\n");
+    printf("\n		6. ice Cream\n");
+    printf("\n		7. exit \n");
 }
 
 // ------------------->Printing Karachi Menu<----------------------
@@ -510,14 +510,13 @@ void KarahiMenu() {
     int choice;
     system("cls");
     
-	printf("KARAHI MENU :\n");
-    printf("\n");
-    printf("1. Special Karahi - 1200 \n");
-    printf("2. Motton Karahi - 1750 \n");
-    printf("3. Beef Karahi - 1950 \n");
-    printf("4. Chicken Karahi -1400 \n");
-    printf("5. Back to Main Menu \n");
-    printf("Enter your choice: ");
+printf("\n			   ------>KARAHI MENU<------\n\n\n");
+    printf("\n		1. special karahi - 1200 \n");
+    printf("\n		2. motton karahi - 1750 \n");
+    printf("\n		3. beef karahi - 1950 \n");
+    printf("\n		4. chicken karahi -1400 \n");
+    printf("\n		5. back to main menu \n");
+    printf("\n		enter a number to continue... ");
     scanf("%d", &choice);
 
     switch (choice) {
@@ -536,7 +535,7 @@ void KarahiMenu() {
         case 5:
             return;
         default:
-            printf("Invalid choice.\n");
+            printf("\n		invalid choice... \n");
     }
 }
 
@@ -545,13 +544,13 @@ void BarBQMenudesi() {
     int choice;
     system("cls");
     
-	printf("BAR BQ MENU :\n");
-    printf("\n");
-    printf("1. Chicken Tikka - 320 \n");
-    printf("2. Reshmi Kebab - 190 \n");
-    printf("3. Chicken Behari Boti - 300 \n");
-    printf("4. Back to Main Menu\n");
-    printf("Enter your choice: ");
+
+printf("\n			   ------>BBQ MENU<------\n\n\n");
+    printf("\n		1. chicken tikka - 320 \n");
+    printf("\n		2. reshmi kebab - 190 \n");
+    printf("\n		3. chicken behari boti - 300 \n");
+    printf("\n		4. back to main menu\n");
+    printf("\n		enter a number to continue... ");
     scanf("%d", &choice);
 
     switch (choice) {
@@ -567,7 +566,7 @@ void BarBQMenudesi() {
         case 4:
             return;
         default:
-            printf("Invalid choice \n");
+            printf("\n		invalid choice... \n");
     }
 }
 
@@ -576,14 +575,13 @@ void DaalMenu() {
     int choice;
     system("cls");
     
-	printf("PIZZA MENU :\n");
-    printf("\n");
-    printf("1. 1KG Channa Daal - 850 \n");
-    printf("2. 1KG Masoor Daal - 950 \n");
-    printf("3. 1KG Moong Daal - 920 \n");
-    printf("4. 1KG Anda Daal - 1050 \n");
-    printf("5. Back to Main Menu\n");
-    printf("Enter your choice: ");
+printf("\n			   ----->DAAL MENU<-----\n\n\n");
+    printf("\n		1. 1KG channa daal - 850 \n");
+    printf("\n		2. 1KG masoor daal - 950 \n");
+    printf("\n		3. 1KG moong daal - 920 \n");
+    printf("\n		4. 1KG anda daal - 1050 \n");
+    printf("\n		5. back to main menu \n");
+    printf("\n		enter a number to continue... ");
     scanf("%d", &choice);
 
     switch (choice) {
@@ -611,13 +609,12 @@ void ParathaMenu() {
     int choice;
     system("cls");
     
-	printf("PARATHA MENU :\n");
-    printf("\n");
-    printf("1. Simple Paratha - 50 \n");
-    printf("2. Aloo Paratha - 100 \n");
-    printf("3. Lachaa Paratha - 90 \n");
-    printf("4. Back to Main Menu \n");
-    printf("Enter your choice: ");
+printf("\n			   ----->PARATHA MENU<-----\n\n\n");
+    printf("\n		1. simple paratha - 50 \n");
+    printf("\n		2. aloo paratha - 100 \n");
+    printf("\n		3. lachaa paratha - 90 \n");
+    printf("\n		4. back to main menu \n");
+    printf("\n		enter a number to continue... ");
     scanf("%d", &choice);
 
     switch (choice) {
@@ -633,7 +630,7 @@ void ParathaMenu() {
         case 4:
             return;
         default:
-            printf("Invalid choice \n");
+            printf("\n		invalid choice... \n");
     }
 }
 
@@ -642,14 +639,13 @@ void JuiceMenudesi() {
     int choice;
     system("cls");
     
-	printf("JUICE MENU :\n");
-    printf("\n");
-    printf("1. Banana Juice - 160 \n");
-    printf("2. Apple Juice - 180 \n");
-    printf("3. Pineapple Juice - 200 \n");
-    printf("4. Peach Juice - 250 \n");
-    printf("5. Back to Main Menu\n");
-    printf("Enter your choice: ");
+printf("\n			   ----->JUICE MENU<-----\n\n\n");
+    printf("\n		1. banana juice - 160 \n");
+    printf("\n		2. apple juice - 180 \n");
+    printf("\n		3. pineapple juice - 200 \n");
+    printf("\n		4. peach juice - 250 \n");
+    printf("\n		5. back to main menu\n");
+    printf("\n		enter a number to continue... ");
     scanf("%d", &choice);
 
     switch (choice) {
@@ -668,7 +664,7 @@ void JuiceMenudesi() {
         case 5:
             return;
         default:
-            printf("Invalid choice.\n");
+            printf("\n		invalid choice... \n");
     }
 }
 
@@ -677,14 +673,13 @@ void IceCreamMenudesi() {
     int choice;
     system("cls");
     
-	printf("ICE CREAM MENU :\n");
-    printf("\n");
-    printf("1. Chocolate - 150 \n");
-    printf("2. Butter Pecan - 210 \n");
-    printf("3. Strawberry - 150 \n");
-    printf("4. Cherry - 190 \n");
-    printf("5. Back to Main Menu\n");
-    printf("Enter your choice: ");
+printf("\n			   ----->ICECREAM MENU<-----\n\n\n");
+    printf("\n		1. chocolate - 150 \n");
+    printf("\n		2. butter pecan - 210 \n");
+    printf("\n		3. strawberry - 150 \n");
+    printf("\n		4. cherry - 190 \n");
+    printf("\n		5. back to main menu\n");
+    printf("\n		enter your choice: ");
     scanf("%d", &choice);
 
     switch (choice) {
@@ -703,7 +698,7 @@ void IceCreamMenudesi() {
         case 5:
             return;
         default:
-            printf("Invalid choice.\n");
+            printf("\n		invalid choice... \n");
     }
 }
 
@@ -716,7 +711,7 @@ void desifood(char str[],char password[]){
     
 	while(1){
         Menudesi();
-        printf("\nEnter your choice : ");
+        printf("\n	   enter a number to continue... ");
         scanf("%d", &choice);
 
         switch (choice) {
@@ -745,7 +740,7 @@ void desifood(char str[],char password[]){
 				if(c == 0)storing(str,password,totalPrice);
                 return ;
             default:
-                printf("Invalid choice - Try Again \n\n\n");
+                printf("\n	   invalid choice... try again... \n\n\n");
         } 
     }
     return;
@@ -756,35 +751,34 @@ void continuous(char str[],char password[]){
 	int num;
 	system("cls");
 
-	printf("     *************\n");
-	printf("     *    -------------------------    	*\n");
-	printf("     *    WELCOME TO THE SYSTEM    		*\n");
-	printf("     *    -------------------------    	*\n");
-	printf("     *************\n\n\n");
-
+		printf("           *********************************************\n");
+		printf("           *    -----------------------------------    *\n");
+		printf("           *               ----->home<-----            *\n");
+		printf("           *    -----------------------------------    *\n");
+		printf("           *********************************************\n\n\n");
 	do{
-	printf("Enter Number \n");
-	printf("1. FAST FOOD\n");
-	printf("2. DESI FOOD\n");
-	printf("3. Exist\n");
+	printf("\n	   1. fast food\n");
+	printf("\n	   2. desi food\n");
+	printf("\n	   3. back to welcome screen\n");
+	printf("\n	   enter a number to continue... ");
 	scanf("%d", &num);
 	
 		if( num == 1){
-		fastfood(str,password);
-		return ;
+			fastfood(str,password);
+			return ;
 		}
 	
 		else if( num == 2){
-		desifood(str,password);
-		return ;
+			desifood(str,password);
+			return ;
 		}
 
 		else if( num == 3){
-		return ;
+			return ;
 		}
 
 		else {
-		printf("Wrong Option\n");
+			printf("\n	   invalid option!...\n");
 		}
 	}while(1);
 }
@@ -794,23 +788,28 @@ void continuous(char str[],char password[]){
 void adminlogin(){
 	system("cls");
 	login str;
-	printf("Enter the Username Without Space\n");
-	scanf("%49s", str.name);
+				   
+printf("\n			   ------>ADMIN LOGIN<------\n\n\n");
+	printf("	   [username is admin123]\n");
+	printf("	   admin username: ");
+	scanf(" %49s", str.name);
 	getchar();
 	
-	if(strcmp(str.name,"admin123")!=0) {
-		printf("You are not an admin");
+	if(strcmp(str.name,"admin123") !=0 ) {
+		printf("\n	   incorrect username, access denied...\n");
 		return ;
 	}
+
+	printf("	   [password is 765626]\n");	
+	printf("	   enter password: ");
+	scanf(" %s", str.password);
 	
-	printf("Enter password\n");
-	scanf("%s", str.password);
-	
-	if(strcmp(str.password,"765626")==0){
-		adminchecking();
+	if(strcmp(str.password, "765626") == 0){
+printf("\n			   ------>ADMIN LOGIN SUCCESFUL<------\n\n\n");
+			adminchecking();
 		return ;
 	}
-	printf("Your are not an admin");
+	printf("\n	   incorrect password, access denied...\n");
 	
 	return ;
 }
@@ -821,21 +820,19 @@ int checkuser(char str[], char password[]){
 	FILE *ptr=fopen("login.txt","a+");
 	
 	if (ptr == NULL) {
-        printf("Error\n");
-        return 0;
-    }
+        	printf("\n	   error, file doesn't exist...\n");
+        	return 0;
+        }
     
-	while(fscanf(ptr,"%s %s",check.name,check.password) != EOF){
-    	if (strcmp(check.name, str) == 0 || strcmp(check.password,password) == 0) {
-    		printf("Change The Username\n");
-        	return 1;
+	while(fscanf(ptr, "%s %s", check.name, check.password) != EOF){
+    		if (strcmp(check.name, str) == 0 || strcmp(check.password, password) == 0) {
+    			printf("\n	   username or password already exists...\n");
+        			return 1;
 		}		
-	}
-	
+	}	
 	fclose(ptr);
-	return 0;
-	
-	
+
+	return 0;	
 }
 
 // ------------------->Printing Add User<----------------------
@@ -843,14 +840,15 @@ void adduser(){
 	system("cls");
 	login str;
 	int c=0;
-	
+				   
+printf("\n			   ----->ADD USER<-----\n\n\n");
 	do{
-	printf("Enter username\n");
-	scanf("%49s", str.name);
-	getchar();
-	printf("Enter password\n");
-	scanf("%49s", str.password);
-	c = checkuser(str.name,str.password);//Checking User Is USed or not
+		printf("\n	   create username[without space]: ");
+		scanf("%49s", str.name);
+		getchar();
+		printf("\n 	   create Password[without spaces]: ");
+		scanf("%49s", str.password);
+		c = checkuser(str.name,str.password);//Checking if user exist with same user name
 	}while(c == 1);
 	
 	FILE *ptr=fopen("login.txt","a");
@@ -869,48 +867,58 @@ void adduser(){
 
 // ------------------->Printing Change Password<----------------------
 void changepassword(){
-	system("cls");
-	
-	login str,str2;
-	int found=0;
-	char change[50];
-	
-	printf("Enter username\n");
-	scanf("%49s", str.name);
-	
-	printf("Enter your current password\n");
-	scanf("%49s", str.password);
-	
-	FILE *ptr=fopen("login.txt","r");
-	 if (ptr == NULL) {
-        printf("Error\n");
+    system("cls");
+    printf("\n\t\t\t----->CHANGE PASSWORD<-----\n\n");
+
+    login str, str2;
+    int found = 0;
+    char change[50];
+
+    printf("\n\tEnter username: ");
+    scanf("%49s", str.name);
+
+    printf("\n\tEnter your current password: ");
+    scanf("%49s", str.password);
+
+    FILE *ptr = fopen("login.txt", "r");
+    if (ptr == NULL) {
+        printf("\n\tError: File doesn't exist...\n");
         return;
     }
-    
-	FILE *ptr2=fopen("copy.txt","w");
-    
-	while(fscanf(ptr,"%s %s",str2.name,str2.password) != EOF){
-    	if (strcmp(str2.name, str.name) == 0 && strcmp(str2.password, str.password) == 0) {
-    		found =1;
-        	printf("Enter new password");
-        	scanf("%s", change);
-        	strcpy(str2.password,change);
-		}
-			fprintf(ptr2,"\n%s   %s",str2.name,str2.password);	
-	}
-	
-	if (found == 0){
-		printf("Record Not Found");
-		Sleep(1000);
-	}
-	
-	fclose(ptr);
-	fclose(ptr2);
-	remove("login.txt");
-    rename("copy.txt", "login.txt");
-    printf("Password changed successfully\n");
+
+    FILE *ptr2 = fopen("copy.txt", "w");
+    if (ptr2 == NULL) {
+        printf("\n\tError: Unable to create temporary file...\n");
+        fclose(ptr);
+        return;
+    }
+
+    while (fscanf(ptr, "%49s %49s", str2.name, str2.password) != EOF) {
+        if (strcmp(str2.name, str.name) == 0 && strcmp(str2.password, str.password) == 0) {
+            found = 1;
+            printf("\n\tEnter new password: ");
+            scanf("%49s", change);
+            strcpy(str2.password, change);
+        }
+        fprintf(ptr2, "%s %s\n", str2.name, str2.password);
+    }
+
+    fclose(ptr);
+    fclose(ptr2);
+
+    if (found) {
+        remove("login.txt");
+        rename("copy.txt", "login.txt");
+        printf("\n\tPassword changed successfully...\n");
+        Sleep(1000);
+    } else {
+        printf("\n\tRecord not found...\n");
+        Sleep(1000);
+        remove("copy.txt");
+    }
+
 	return ;
-	
+
 }
 
 // ------------------->Printing Find User<----------------------
@@ -918,10 +926,11 @@ void finduser(){
 	system("cls");
 	login str,str2;
 	int found=0;
-	printf("Enter username\n");
+printf("			   ----->FIND USER<-----\n\n\n");
+	printf("\n	   enter username: ");
 	scanf("%49s", str.name);
 	
-	printf("Enter password\n");
+	printf("\n	   enter password: ");
 	scanf("%49s", str.password);
 	
 	
@@ -936,23 +945,24 @@ void finduser(){
 		if (strcmp(str2.name, str.name) == 0 && strcmp(str2.password, str.password) == 0) {
             found = 1;
             system("cls");
-			printf("User is available.\n");
-            printf("Enter\n 1.Change password \n 2.continue\n");
-            scanf("%d", &num);
-            if(num==1){
-            	fclose(ptr);
-            	changepassword();
-				return;
-			}
-			else if(num == 2){
-				continuous(str.name,str.password);
-			}
-            break;
-        }
+printf("\n			   ----->USER AVAILABLE<-----\n\n\n");
+        	    printf("\n	   1. change password\n");
+		    printf("\n	   2. Place an order\n");
+		    printf("\n	   enter a number to continue...");
+	            scanf("%d", &num);
+        	    if(num==1){
+	            	fclose(ptr);
+            		changepassword();
+			return;
+		    }else if(num == 2){
+			continuous(str.name,str.password);
+		    }
+	            break;
+        	}
 	}
 	
 	if(found==0){
-		printf("User unavailable");
+		printf("\n	   error, user unavailable...\n");
 		Sleep(1000);
 	}
 	
@@ -986,32 +996,38 @@ int main(){
 	
 	do{
 		system("cls");
-		printf("     *************\n");
-		printf("     *    ----------------------------           *\n");
-		printf("     *    WELCOME TO THE FAST FOOD E-Commerce    *\n");
-		printf("     *    ----------------------------           *\n");
-		printf("     *************\n\n\n");
-	
-		printf("Enter Number \n 1. Admin Login \n 2. Registration \n 3. Login \n 4. Exit\n");
+		printf("           *********************************************\n");
+		printf("           *    -----------------------------------    *\n");
+		printf("           *             ----->WELCOME<-----           *\n");
+		printf("           *    -----------------------------------    *\n");
+		printf("           *********************************************\n\n\n");
+				   
+		printf("\n	   1. admin Login\n");
+		printf("\n           2. customer Registration\n");
+		printf("\n           3. customer Login\n");
+		printf("\n           4. exit\n\n\n");
+		printf("\n	   enter a number to continue... ");
 		scanf("%d", &num);
+		printf("\n");
 		if(num==1){
 			adminlogin();
-			return 0;
 		}
 		else if(num==2){
 			adduser();
-			printf("Added Succesfully\n");
+			printf("\n	   added Succesfully...\n");
 			Sleep(1000);
 		}
 		else if(num==3){
 			finduser();
 		}
 		else if(num==4){
-			printf("Exiting please wait!\n");
+
+			printf("\n	   exiting, please wait...!\n");
+printf("\n			   ----->THANK YOU!<-----\n\n\n");
 			return 0;
 		}
 		else {
-			printf("Invalid choice");
+			printf("\n	   invalid option...\n");
 			return 0;
 		}
 	}while(1);
